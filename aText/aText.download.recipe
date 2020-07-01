@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<!--
-  Copyright 2019 Palantir Technologies, Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <dict>
-  <key>Description</key>
-  <string>Downloads the latest version of aText from the vendor.</string>
-  <key>Identifier</key>
-  <string>com.github.palantir.download.aText</string>
-  <key>Input</key>
-  <dict>
-    <key>NAME</key>
-    <string>aText</string>
-    <key>DOWNLOAD_URL</key>
-    <string>https://www.trankynam.com/atext/downloads/aText.dmg</string>
-  </dict>
-  <key>MinimumVersion</key>
-  <string>0.2.9</string>
-  <key>Process</key>
-  <array>
-    <dict>
-      <key>Processor</key>
-      <string>URLDownloader</string>
-      <key>Arguments</key>
-      <dict>
-        <key>url</key>
-        <string>%DOWNLOAD_URL%</string>
-      </dict>
-    </dict>
-  </array>
+	<key>Comment</key>
+	<string>Copyright 2019 Palantir Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+	<key>Description</key>
+	<string>Downloads the latest version of aText from the vendor.</string>
+	<key>Identifier</key>
+	<string>com.github.palantir.download.aText</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://www.trankynam.com/atext/downloads/aText.dmg</string>
+		<key>NAME</key>
+		<string>aText</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+	</array>
 </dict>
 </plist>

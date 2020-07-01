@@ -1,81 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<!--
-  Copyright 2019 Palantir Technologies, Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <dict>
-  <key>Description</key>
-  <string>Downloads the latest version of exacqVision Client from the vendor, creates an installer package, then uploads it to the Jamf Pro server.</string>
+	<key>Comment</key>
+	<string>Copyright 2019 Palantir Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+	<key>Description</key>
+	<string>Downloads the latest version of exacqVision Client from the vendor, creates an installer package, then uploads it to the Jamf Pro server.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.jss.exacqVision Client</string>
 	<key>Input</key>
 	<dict>
-    <key>CATEGORY</key>
-    <string>Productivity</string>
-    <key>GROUP_NAME</key>
-    <string>%NAME%-update-smart</string>
-    <key>GROUP_TEMPLATE</key>
-    <string>SmartGroupTemplate.xml</string>
-    <key>NAME</key>
-    <string>exacqVision Client</string>
-    <key>POLICY_CATEGORY</key>
-    <string>Testing</string>
-    <key>POLICY_TEMPLATE</key>
-    <string>PolicyTemplate.xml</string>
-    <key>SELF_SERVICE_DESCRIPTION</key>
-    <string>The exacqVision VMS software gives end users an easy-to-use, yet feature rich system to manage live and recorded video for a variety of needs.</string>
-    <key>SELF_SERVICE_ICON</key>
-    <string>exacqVision Client.png</string>
+		<key>CATEGORY</key>
+		<string>Productivity</string>
+		<key>GROUP_NAME</key>
+		<string>%NAME%-update-smart</string>
+		<key>GROUP_TEMPLATE</key>
+		<string>SmartGroupTemplate.xml</string>
+		<key>NAME</key>
+		<string>exacqVision Client</string>
+		<key>POLICY_CATEGORY</key>
+		<string>Testing</string>
+		<key>POLICY_TEMPLATE</key>
+		<string>PolicyTemplate.xml</string>
+		<key>SELF_SERVICE_DESCRIPTION</key>
+		<string>The exacqVision VMS software gives end users an easy-to-use, yet feature rich system to manage live and recorded video for a variety of needs.</string>
+		<key>SELF_SERVICE_ICON</key>
+		<string>exacqVision Client.png</string>
 	</dict>
-  <key>MinimumVersion</key>
-  <string>1.0.0</string>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.nstrauss.pkg.exacqVision</string>
-  <key>Process</key>
-  <array>
-    <dict>
-      <key>Arguments</key>
-      <dict>
-        <key>category</key>
-        <string>%CATEGORY%</string>
-        <key>groups</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>%GROUP_NAME%</string>
-            <key>smart</key>
-            <true/>
-            <key>template_path</key>
-            <string>%GROUP_TEMPLATE%</string>
-          </dict>
-        </array>
-        <key>policy_category</key>
-        <string>%POLICY_CATEGORY%</string>
-        <key>policy_template</key>
-        <string>%POLICY_TEMPLATE%</string>
-        <key>prod_name</key>
-        <string>%NAME%</string>
-        <key>self_service_description</key>
-        <string>%SELF_SERVICE_DESCRIPTION%</string>
-        <key>self_service_icon</key>
-        <string>%SELF_SERVICE_ICON%</string>
-      </dict>
-      <key>Processor</key>
-      <string>JSSImporter</string>
-    </dict>
-  </array>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>category</key>
+				<string>%CATEGORY%</string>
+				<key>groups</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>%GROUP_NAME%</string>
+						<key>smart</key>
+						<true/>
+						<key>template_path</key>
+						<string>%GROUP_TEMPLATE%</string>
+					</dict>
+				</array>
+				<key>policy_category</key>
+				<string>%POLICY_CATEGORY%</string>
+				<key>policy_template</key>
+				<string>%POLICY_TEMPLATE%</string>
+				<key>prod_name</key>
+				<string>%NAME%</string>
+				<key>self_service_description</key>
+				<string>%SELF_SERVICE_DESCRIPTION%</string>
+				<key>self_service_icon</key>
+				<string>%SELF_SERVICE_ICON%</string>
+			</dict>
+			<key>Processor</key>
+			<string>JSSImporter</string>
+		</dict>
+	</array>
 </dict>
 </plist>
