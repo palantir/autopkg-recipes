@@ -48,6 +48,15 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_message</key>
+				<string>This recipe has been deprecated, as Workshare is no longer supported for macOS (https://www.litera.com/products/store/workshare-compare/#faq). It will be removed after October 25th, 2020.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>category</key>
 				<string>%CATEGORY%</string>
 				<key>groups</key>
