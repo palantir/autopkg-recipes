@@ -17,7 +17,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Sublime Text 4 from the vendor.</string>
+	<string>Downloads the latest version of Sublime Text from the vendor.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.Sublime Text</string>
 	<key>Input</key>
