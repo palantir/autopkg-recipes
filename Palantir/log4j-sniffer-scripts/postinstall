@@ -19,7 +19,7 @@ binaryPath="${3}/usr/local/bin/log4j-sniffer"
 if [ "$(/usr/bin/arch)" = "arm64" ]; then
   dmgPath="$(/usr/bin/find "${workingDir}" -name "log4j-sniffer-arm64*.dmg")"
 elif [ "$(/usr/bin/arch)" = "i386" ]; then
-  dmgPath="$(/usr/bin/find "${workingDir}" -name "log4j-sniffer-amd64*.dmg")"
+  dmgPath="$(/usr/bin/find "${workingDir}" -name "log4j-sniffer-x86*.dmg")"
 else
   echo "❌ ERROR: Unknown architecture: $(/usr/bin/arch), unable to proceed."
   exit 1

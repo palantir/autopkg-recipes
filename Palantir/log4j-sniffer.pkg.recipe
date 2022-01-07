@@ -83,7 +83,7 @@ limitations under the License.</string>
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>scripts</key>
-					<string>Scripts</string>
+					<string>log4j-sniffer-scripts</string>
 					<key>version</key>
 					<string>%version%</string>
 				</dict>

@@ -37,7 +37,7 @@ limitations under the License.</string>
 		<key>SELF_SERVICE_ICON</key>
 		<string>Palantir.png</string>
 		<key>UPDATE_PREDICATE</key>
-		<string>"pkg_uploaded == False"</string>
+		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3.1</string>
@@ -80,7 +80,7 @@ limitations under the License.</string>
 				<key>policy_name</key>
 				<string>%POLICY_NAME%</string>
 				<key>policy_template</key>
-				<string>%POLICY_NAME%</string>
+				<string>%POLICY_TEMPLATE%</string>
 				<key>replace_icon</key>
 				<true/>
 				<key>replace_policy</key>
