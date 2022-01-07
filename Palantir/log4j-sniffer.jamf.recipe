@@ -24,14 +24,10 @@ limitations under the License.</string>
 	<dict>
 		<key>CATEGORY</key>
 		<string>Utility</string>
-		<key>INSTALL_BUTTON_TEXT</key>
-		<string>Install %version%</string>
 		<key>POLICY_NAME</key>
 		<string>log4j-sniffer</string>
 		<key>POLICY_TEMPLATE</key>
 		<string>PolicyTemplate-SelfService.xml</string>
-		<key>REINSTALL_BUTTON_TEXT</key>
-		<string>Reinstall %version%</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>A tool that scans archives to check for vulnerable log4j versions.</string>
 		<key>SELF_SERVICE_ICON</key>
