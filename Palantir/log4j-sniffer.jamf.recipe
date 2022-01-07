@@ -73,10 +73,14 @@ limitations under the License.</string>
 			<dict>
 				<key>icon</key>
 				<string>%SELF_SERVICE_ICON%</string>
+				<key>install_button_text</key>
+				<string>Install %version%</string>
 				<key>policy_name</key>
 				<string>%POLICY_NAME%</string>
 				<key>policy_template</key>
 				<string>%POLICY_TEMPLATE%</string>
+				<key>reinstall_button_text</key>
+				<string>Reinstall %version%</string>
 				<key>replace_icon</key>
 				<true/>
 				<key>replace_policy</key>
