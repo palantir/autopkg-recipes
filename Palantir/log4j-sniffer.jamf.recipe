@@ -35,7 +35,7 @@ limitations under the License.</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>A tool that scans archives to check for vulnerable log4j versions.</string>
 		<key>SELF_SERVICE_ICON</key>
-		<string>%NAME%.png</string>
+		<string>Palantir.png</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>"pkg_uploaded == False"</string>
 	</dict>
