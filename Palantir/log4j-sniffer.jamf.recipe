@@ -22,16 +22,16 @@ limitations under the License.</string>
 	<string>com.github.palantir.jamf.log4j-sniffer</string>
 	<key>Input</key>
 	<dict>
-		<key>CATEGORY</key>
+		<key>SELF_SERVICE_CATEGORY</key>
 		<string>Utility</string>
-		<key>POLICY_NAME</key>
-		<string>log4j-sniffer</string>
-		<key>POLICY_TEMPLATE</key>
-		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>A tool that scans archives to check for vulnerable log4j versions.</string>
 		<key>SELF_SERVICE_ICON</key>
 		<string>Palantir.png</string>
+		<key>SELF_SERVICE_POLICY_NAME</key>
+		<string>log4j-sniffer</string>
+		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
+		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
@@ -45,7 +45,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>category_name</key>
-				<string>%CATEGORY%</string>
+				<string>%SELF_SERVICE_CATEGORY%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
@@ -54,7 +54,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_category</key>
-				<string>%CATEGORY%</string>
+				<string>%SELF_SERVICE_CATEGORY%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
@@ -73,14 +73,10 @@ limitations under the License.</string>
 			<dict>
 				<key>icon</key>
 				<string>%SELF_SERVICE_ICON%</string>
-				<key>install_button_text</key>
-				<string>Install %version%</string>
 				<key>policy_name</key>
-				<string>%POLICY_NAME%</string>
+				<string>%SELF_SERVICE_POLICY_NAME%</string>
 				<key>policy_template</key>
-				<string>%POLICY_TEMPLATE%</string>
-				<key>reinstall_button_text</key>
-				<string>Reinstall %version%</string>
+				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
 				<key>replace_icon</key>
 				<true/>
 				<key>replace_policy</key>

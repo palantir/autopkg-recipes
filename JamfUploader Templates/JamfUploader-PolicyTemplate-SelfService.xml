@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <policy>
 	<general>
-		<name>%POLICY_NAME%</name>
+		<name>%SELF_SERVICE_POLICY_NAME%</name>
 		<enabled>true</enabled>
 		<frequency>Ongoing</frequency>
 		<category>
-			<name>%CATEGORY%</name>
+			<name>%SELF_SERVICE_CATEGORY%</name>
 		</category>
 		<trigger_other>selfservice-%NAME%</trigger_other>
 	</general>
@@ -26,8 +26,10 @@
 	</scripts>
 	<self_service>
 		<use_for_self_service>true</use_for_self_service>
-		<self_service_display_name>%POLICY_NAME%</self_service_display_name>
+		<self_service_display_name>%SELF_SERVICE_POLICY_NAME%</self_service_display_name>
 		<self_service_description>%SELF_SERVICE_DESCRIPTION%</self_service_description>
+		<install_button_text>Install %version%</install_button_text>
+		<reinstall_button_text>Reinstall %version%</reinstall_button_text>
 	</self_service>
 	<maintenance>
 		<recon>true</recon>
