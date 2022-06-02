@@ -15,7 +15,7 @@ AutoPkg is a system for automatically preparing software for distribution to man
 https://autopkg.github.io/autopkg/
 
 #### JamfUploader
-A collection of Autopkg processors used for all the .jamf recipes in this repository. Note that <a href="https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors#using-the-processors">using JamfUploader</a> requires adding the `grahampugh-recipes` repo to your AutoPkg preferences.
+A collection of Autopkg processors used for all the .jamf recipes in this repository. Note that [using JamfUploader](https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors#using-the-processors) requires adding the `grahampugh-recipes` repo to your AutoPkg preferences.
 https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors
 
 #### JSSImporter
