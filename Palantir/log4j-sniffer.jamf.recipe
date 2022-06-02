@@ -22,7 +22,7 @@ limitations under the License.</string>
 	<string>com.github.palantir.jamf.log4j-sniffer</string>
 	<key>Input</key>
 	<dict>
-		<key>SELF_SERVICE_CATEGORY</key>
+		<key>PACKAGE_CATEGORY</key>
 		<string>Utility</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>A tool that scans archives to check for vulnerable log4j versions.</string>
@@ -45,7 +45,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>category_name</key>
-				<string>%SELF_SERVICE_CATEGORY%</string>
+				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
@@ -54,7 +54,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_category</key>
-				<string>%SELF_SERVICE_CATEGORY%</string>
+				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
