@@ -26,7 +26,7 @@ limitations under the License.</string>
 		<string>com.github.palantir.log4j-sniffer</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>2.3.1</string>
+	<string>0.5.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.palantir.download.log4j-sniffer</string>
 	<key>Process</key>

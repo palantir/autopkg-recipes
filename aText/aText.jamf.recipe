@@ -19,17 +19,13 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of aText from the vendor, creates an installer package, then uploads it to the Jamf Pro server.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jss.aText</string>
+	<string>com.github.palantir.jamf.aText</string>
 	<key>Input</key>
 	<dict>
-		<key>CATEGORY</key>
+		<key>PACKAGE_CATEGORY</key>
 		<string>Productivity</string>
-		<key>GROUP_NAME</key>
-		<string>%NAME%-update-smart</string>
-		<key>GROUP_TEMPLATE</key>
-		<string>SmartGroupTemplate.xml</string>
 		<key>OS_REQUIREMENTS</key>
-		<string>10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x,10.9.x</string>
+		<string>12.x,11.x,10.15.x,10.14.x,10.13.x,10.12.x</string>
 		<key>POLICY_CATEGORY</key>
 		<string>Testing</string>
 		<key>POLICY_TEMPLATE</key>
@@ -37,10 +33,16 @@ limitations under the License.</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>aText accelerates your typing by replacing abbreviations with frequently used phrases you define.</string>
 		<key>SELF_SERVICE_ICON</key>
-		<string>aText.png</string>
+		<string>%NAME%.png</string>
+		<key>SELF_SERVICE_POLICY_NAME</key>
+		<string>%NAME%</string>
+		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
+		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
+		<key>UPDATE_PREDICATE</key>
+		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>2.0.2</string>
 	<key>ParentRecipe</key>
 	<string>com.github.palantir.pkg.aText</string>
 	<key>Process</key>
@@ -48,36 +50,54 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>category</key>
-				<string>%CATEGORY%</string>
-				<key>groups</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>%GROUP_NAME%</string>
-						<key>smart</key>
-						<true/>
-						<key>template_path</key>
-						<string>%GROUP_TEMPLATE%</string>
-					</dict>
-				</array>
+				<key>category_name</key>
+				<string>%PACKAGE_CATEGORY%</string>
+			</dict>
+			<key>Comment</key>
+			<string>JamfCategoryUploader processor run for Self Service category.</string>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>os_requirements</key>
 				<string>%OS_REQUIREMENTS%</string>
+				<key>pkg_category</key>
+				<string>%PACKAGE_CATEGORY%</string>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-				<key>policy_category</key>
-				<string>%POLICY_CATEGORY%</string>
-				<key>policy_template</key>
-				<string>%POLICY_TEMPLATE%</string>
-				<key>prod_name</key>
-				<string>%NAME%</string>
-				<key>self_service_description</key>
-				<string>%SELF_SERVICE_DESCRIPTION%</string>
-				<key>self_service_icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
 			</dict>
 			<key>Processor</key>
-			<string>JSSImporter</string>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>%UPDATE_PREDICATE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>icon</key>
+				<string>%SELF_SERVICE_ICON%</string>
+				<key>policy_name</key>
+				<string>%SELF_SERVICE_POLICY_NAME%</string>
+				<key>policy_template</key>
+				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
+				<key>replace_icon</key>
+				<true/>
+				<key>replace_policy</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>JamfPolicyUploader processor run for Self Service policy.</string>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
 		</dict>
 	</array>
 </dict>

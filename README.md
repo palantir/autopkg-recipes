@@ -18,10 +18,6 @@ https://autopkg.github.io/autopkg/
 A collection of Autopkg processors used for all the .jamf recipes in this repository. Note that [using JamfUploader](https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors#using-the-processors) requires adding the `grahampugh-recipes` repo to your AutoPkg preferences.
 https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors
 
-#### JSSImporter
-An AutoPkg processor used for all the .jss recipes in this repository. These will eventually be transitioned to JamfUploader recipes.
-https://github.com/jssimporter/JSSImporter
-
 #### MacAdmins Slack
 A Slack channel of Mac administrators. A great way to reach out for questions about Mac management and participate in the community.
 https://www.macadmins.org

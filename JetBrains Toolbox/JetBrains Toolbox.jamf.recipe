@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Copyright 2021 Palantir Technologies, Inc.
+	<string>Copyright 2019 Palantir Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,15 +17,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Sublime Text from the vendor, creates an installer package, then uploads it to the Jamf Pro server.</string>
+	<string>Downloads the latest version of JetBrains Toolbox from the vendor, creates an installer package, then uploads it to the Jamf Pro server.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jamf.aText</string>
+	<string>com.github.palantir.jamf.JetBrains Toolbox</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
-		<string>Productivity</string>
+		<string>Utility</string>
+		<key>OS_REQUIREMENTS</key>
+		<string>12.x,11.x,10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>Sublime Text is a sophisticated text editor for code, markup and prose. You'll love the slick user interface, extraordinary features and amazing performance.</string>
+		<string>JetBrains Toolbox is a control panel for managing JetBrains application installations.</string>
 		<key>SELF_SERVICE_ICON</key>
 		<string>%NAME%.png</string>
 		<key>SELF_SERVICE_POLICY_NAME</key>
@@ -34,11 +36,12 @@ limitations under the License.</string>
 		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
+
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.palantir.pkg.Sublime Text</string>
+	<string>com.github.palantir.pkg.JetBrains Toolbox</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -55,6 +58,8 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>os_requirements</key>
+				<string>%OS_REQUIREMENTS%</string>
 				<key>pkg_category</key>
 				<string>%PACKAGE_CATEGORY%</string>
 			</dict>

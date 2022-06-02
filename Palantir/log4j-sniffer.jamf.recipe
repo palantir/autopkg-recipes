@@ -36,7 +36,7 @@ limitations under the License.</string>
 		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>2.3.1</string>
+	<string>2.0.2</string>
 	<key>ParentRecipe</key>
 	<string>com.github.palantir.pkg.log4j-sniffer</string>
 	<key>Process</key>
