@@ -23,9 +23,9 @@ limitations under the License.</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://www.sublimetext.com/download</string>
+		<string>https://www.sublimetext.com/download_thanks</string>
 		<key>NAME</key>
-		<string>Sublime Text 4</string>
+		<string>Sublime Text</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.4</string>
