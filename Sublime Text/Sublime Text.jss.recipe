@@ -39,6 +39,8 @@ limitations under the License.</string>
 		<key>SELF_SERVICE_ICON</key>
 		<string>%NAME%.png</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>1.4</string>
 	<key>ParentRecipe</key>
 	<string>com.github.palantir.pkg.Sublime Text</string>
 	<key>Process</key>

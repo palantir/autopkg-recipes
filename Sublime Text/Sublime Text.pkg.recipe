@@ -22,6 +22,8 @@ limitations under the License.</string>
 	<string>com.github.palantir.pkg.Sublime Text</string>
 	<key>Input</key>
 	<dict/>
+	<key>MinimumVersion</key>
+	<string>1.4</string>
 	<key>ParentRecipe</key>
 	<string>com.github.palantir.download.Sublime Text</string>
 	<key>Process</key>
