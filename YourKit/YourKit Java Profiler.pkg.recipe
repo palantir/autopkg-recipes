@@ -26,7 +26,7 @@ limitations under the License.</string>
 		<string>YourKit Java Profiler</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.peshay.download.JavaProfiler</string>
 	<key>Process</key>
@@ -35,7 +35,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.app</string>
+				<string>%RECIPE_CACHE_DIR%/YourKit Java Profiler.app</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>

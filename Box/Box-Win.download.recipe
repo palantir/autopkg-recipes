@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Copyright 2019 Palantir Technologies, Inc.
+	<string>Copyright 2020 Palantir Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,15 +17,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of aText from the vendor.</string>
+	<string>Downloads the latest version of Box for Windows (64-bit) from the vendor.
+
+To download Box for Windows (32-bit), change DOWNLOAD_URL in your override to: https://e3.boxcdn.net/box-installers/desktop/releases/win32/Box-x86.msi</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.download.aText</string>
+	<string>com.github.palantir.download.Box-Win</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://www.trankynam.com/atext/downloads/aText.dmg</string>
+		<string>https://e3.boxcdn.net/box-installers/desktop/releases/win/Box-x64.msi</string>
 		<key>NAME</key>
-		<string>aText</string>
+		<string>Box</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -43,6 +45,26 @@ limitations under the License.</string>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>msi_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.hansen-m.SharedProcessors/MSIVersionProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%pathname%</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-Win64-%version%.msi</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileMover</string>
 		</dict>
 	</array>
 </dict>

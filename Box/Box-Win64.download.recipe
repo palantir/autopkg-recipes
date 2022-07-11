@@ -28,9 +28,18 @@ limitations under the License.</string>
 		<string>Box</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>1.1</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Box-Win64.download has been deprecated in favor of Box-Win.download. After October 31st, 2022, this recipe will be deleted.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
@@ -39,6 +48,10 @@ limitations under the License.</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
