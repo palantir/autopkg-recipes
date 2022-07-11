@@ -17,7 +17,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of JetBrains Toolbox from the vendor.</string>
+	<string>Downloads the latest version of JetBrains Toolbox from the vendor.
+
+Valid PLATFORM_ARCH arguments are:
+- "macM1": Downloads JetBrains Toolbox for Apple Silicon Macs
+- "mac": Downloads JetBrains Toolbox for Intel Macs (default)</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.JetBrains Toolbox</string>
 	<key>Input</key>
@@ -26,6 +30,8 @@ limitations under the License.</string>
 		<string>https://data.services.jetbrains.com/products/releases?code=TBA</string>
 		<key>NAME</key>
 		<string>JetBrains Toolbox</string>
+		<key>PLATFORM_ARCH</key>
+		<string>mac</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -35,7 +41,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>mac":{"link":"(.+?dmg)"</string>
+				<string>%PLATFORM_ARCH%":{"link":"(?P&lt;url&gt;https://download.jetbrains.com/toolbox/jetbrains-toolbox-(?P&lt;version&gt;[0-9\.]+)(-arm64)?\.dmg)"</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
@@ -46,12 +52,14 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
-				<key>url</key>
-				<string>%match%</string>
+				<string>%NAME%-%PLATFORM_ARCH%-%version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -63,10 +71,6 @@ limitations under the License.</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>
