@@ -17,13 +17,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of GPG Tap Notifier from the vendor.</string>
+	<string>Downloads the latest version of GPG Tap Notifier from the vendor.
+
+Set %include_prereleases% to true in your override to package prelease builds in your environment.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.GPG Tap Notifier</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>GPG Tap Notifier</string>
+		<key>include_prereleases</key>
+		<false/>
 		<key>REPO</key>
 		<string>palantir/gpg-tap-notifier-macos</string>
 	</dict>
@@ -38,8 +42,6 @@ limitations under the License.</string>
 				<string>GPG_Tap_Notifier\.pkg</string>
 				<key>github_repo</key>
 				<string>%REPO%</string>
-				<key>include_prereleases</key>
-				<true/>
 			</dict>
 			<key>Comment</key>
 			<string>GitHubReleasesInfoProvider processor run for .pkg download.</string>
