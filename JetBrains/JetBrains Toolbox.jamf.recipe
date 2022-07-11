@@ -24,8 +24,6 @@ limitations under the License.</string>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
 		<string>Utility</string>
-		<key>OS_REQUIREMENTS</key>
-		<string>12.x,11.x,10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>JetBrains Toolbox is a control panel for managing JetBrains application installations.</string>
 		<key>SELF_SERVICE_ICON</key>
@@ -36,7 +34,6 @@ limitations under the License.</string>
 		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
-
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
@@ -58,8 +55,6 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>os_requirements</key>
-				<string>%OS_REQUIREMENTS%</string>
 				<key>pkg_category</key>
 				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
@@ -78,8 +73,17 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>source_app</key>
+				<string>%RECIPE_CACHE_DIR%/payload/Applications/JetBrains Toolbox.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
+				<string>%app_icon_path%</string>
 				<key>policy_name</key>
 				<string>%SELF_SERVICE_POLICY_NAME%</string>
 				<key>policy_template</key>
