@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Copyright 2023 Palantir Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+	<key>Description</key>
+	<string>Downloads the latest version of .NET Core Uninstall Tool from the vendor, creates an installer package, uploads it to Jamf Pro, then adds it to a Self Service policy.</string>
+	<key>Identifier</key>
+	<string>com.github.palantir.jamf.DotNet Core Uninstall Tool</string>
+	<key>Input</key>
+	<dict>
+		<key>PACKAGE_CATEGORY</key>
+		<string>Utility</string>
+		<key>SELF_SERVICE_DESCRIPTION</key>
+		<string>The .NET uninstall tool (dotnet-core-uninstall) lets you remove .NET SDKs and runtimes from a system. A collection of options is available to specify which versions you want to uninstall.</string>
+		<key>SELF_SERVICE_ICON</key>
+		<string>Unix Executable File.png</string>
+		<key>SELF_SERVICE_POLICY_NAME</key>
+		<string>.NET Core Uninstall Tool</string>
+		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
+		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
+		<key>UPDATE_PREDICATE</key>
+		<string>pkg_uploaded == False</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.0.2</string>
+	<key>ParentRecipe</key>
+	<string>com.github.palantir.pkg.DotNet Core Uninstall Tool</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>category_name</key>
+				<string>%PACKAGE_CATEGORY%</string>
+			</dict>
+			<key>Comment</key>
+			<string>JamfCategoryUploader processor run for Self Service category.</string>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_category</key>
+				<string>%PACKAGE_CATEGORY%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>%UPDATE_PREDICATE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>icon</key>
+				<string>%SELF_SERVICE_ICON%</string>
+				<key>policy_name</key>
+				<string>%SELF_SERVICE_POLICY_NAME%</string>
+				<key>policy_template</key>
+				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
+				<key>replace_icon</key>
+				<true/>
+				<key>replace_policy</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
+		</dict>
+	</array>
+</dict>
+</plist>

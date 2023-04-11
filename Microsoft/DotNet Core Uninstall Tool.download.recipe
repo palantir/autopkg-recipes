@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Copyright 2023 Palantir Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+	<key>Description</key>
+	<string>Downloads the latest version of .NET Core Uninstall Tool from the vendor.</string>
+	<key>Identifier</key>
+	<string>com.github.palantir.download.DotNet Core Uninstall Tool</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>DotNet Core Uninstall Tool</string>
+		<key>REPO</key>
+		<string>dotnet/cli-lab</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>dotnet-core-uninstall.tar.gz</string>
+				<key>github_repo</key>
+				<string>%REPO%</string>
+			</dict>
+			<key>Comment</key>
+			<string>GitHubReleasesInfoProvider processor run for release download.</string>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>URLDownloader processor run.</string>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+				<dict>
+					<key>destination_path</key>
+					<string>%RECIPE_CACHE_DIR%/unzip</string>
+					<key>purge_destination</key>
+					<true/>
+				</dict>
+			<key>Comment</key>
+			<string>Unarchiver processor run.</string>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
