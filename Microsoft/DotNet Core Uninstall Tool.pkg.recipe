@@ -17,7 +17,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of .NET Core Uninstall Tool from the vendor, then creates an installer package.</string>
+	<string>Downloads the latest version of dotnet-core-uninstall from the vendor, then creates an installer package.
+
+The recipe name can be replaced in overrides, but we recommend not using ".NET" as a prepend, as this can cause PkgCreator and other processors to fail with errors.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.pkg.DotNet Core Uninstall Tool</string>
 	<key>Input</key>

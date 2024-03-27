@@ -17,7 +17,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of .NET Core Uninstall Tool from the vendor, creates an installer package, uploads it to Jamf Pro, then adds it to a Self Service policy.</string>
+	<string>Downloads the latest version of dotnet-core-uninstall from the vendor, creates an installer package, uploads it to Jamf Pro, then adds it to a Self Service policy.
+
+The recipe name and Self Service policy name can be replaced in overrides, but we recommend not using ".NET" as a prepend, as this can cause PkgCreator and other processors to fail with errors.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.jamf.DotNet Core Uninstall Tool</string>
 	<key>Input</key>
@@ -25,11 +27,11 @@ limitations under the License.</string>
 		<key>PACKAGE_CATEGORY</key>
 		<string>Utility</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>The .NET uninstall tool (dotnet-core-uninstall) lets you remove .NET SDKs and runtimes from a system. A collection of options is available to specify which versions you want to uninstall.</string>
+		<string>dotnet-core-uninstall lets you remove .NET SDKs and runtimes from a system. A collection of options is available to specify which versions you want to uninstall.</string>
 		<key>SELF_SERVICE_ICON</key>
 		<string>Unix Executable File.png</string>
 		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>.NET Core Uninstall Tool</string>
+		<string>dotnet-core-uninstall</string>
 		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
 		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
