@@ -31,7 +31,7 @@ The recipe name and Self Service policy name can be replaced in overrides, but w
 		<key>SELF_SERVICE_ICON</key>
 		<string>Unix Executable File.png</string>
 		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>dotnet-core-uninstall</string>
+		<string>%NAME%</string>
 		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
 		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
