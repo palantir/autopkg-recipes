@@ -74,7 +74,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
+				<string>%app_icon_path%</string>
 				<key>policy_name</key>
 				<string>%SELF_SERVICE_POLICY_NAME%</string>
 				<key>policy_template</key>
