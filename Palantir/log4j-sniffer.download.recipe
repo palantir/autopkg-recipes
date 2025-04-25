@@ -17,13 +17,23 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of log4j-sniffer from the vendor.</string>
+	<string>Downloads the latest version of log4j-sniffer from the vendor.
+
+Set %include_prereleases% to true in your override to package prelease builds in your environment.
+
+Valid PLATFORM_ARCH arguments are:
+- "arm64": Downloads JetBrains Toolbox for Apple Silicon Macs (default)
+- "amd64": Downloads JetBrains Toolbox for Intel Macs</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.log4j-sniffer</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>log4j-sniffer</string>
+		<key>include_prereleases</key>
+		<false/>
+		<key>PLATFORM_ARCH</key>
+		<string>arm64</string>
 		<key>REPO</key>
 		<string>palantir/log4j-sniffer</string>
 	</dict>
@@ -35,12 +45,12 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>log4j-sniffer-(\d\.){3}macos-arm64\.dmg</string>
+				<string>log4j-sniffer-(\d\.){3}macos-%PLATFORM_ARCH%\.dmg</string>
 				<key>github_repo</key>
 				<string>%REPO%</string>
 			</dict>
 			<key>Comment</key>
-			<string>GitHubReleasesInfoProvider processor run for arm64 binary.</string>
+			<string>GitHubReleasesInfoProvider processor run.</string>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
 		</dict>
@@ -48,10 +58,10 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-arm64-%version%.dmg</string>
+				<string>%NAME%-%PLATFORM_ARCH%-%version%.dmg</string>
 			</dict>
 			<key>Comment</key>
-			<string>URLDownloader processor run for arm64 binary.</string>
+			<string>URLDownloader processor run.</string>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
@@ -61,47 +71,10 @@ limitations under the License.</string>
 				<key>input_path</key>
 				<string>%pathname%</string>
 				<key>requirement</key>
-				<string>identifier "log4j-sniffer-%version%.macos-arm64" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ASJT2NYP59</string>
+				<string>identifier "log4j-sniffer-%version%.macos-%PLATFORM_ARCH%" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ASJT2NYP59</string>
 			</dict>
 			<key>Comment</key>
-			<string>CodeSignatureVerifier processor run for arm64 binary.</string>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>asset_regex</key>
-				<string>log4j-sniffer-(\d\.){3}macos-amd64\.dmg</string>
-				<key>github_repo</key>
-				<string>%REPO%</string>
-			</dict>
-			<key>Comment</key>
-			<string>GitHubReleasesInfoProvider processor run for x86 binary.</string>
-			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-x86-%version%.dmg</string>
-			</dict>
-			<key>Comment</key>
-			<string>URLDownloader processor run for x86 binary.</string>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%pathname%</string>
-				<key>requirement</key>
-				<string>identifier "log4j-sniffer-%version%.macos-amd64" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ASJT2NYP59</string>
-			</dict>
-			<key>Comment</key>
-			<string>CodeSignatureVerifier processor run for x86 binary.</string>
+			<string>CodeSignatureVerifier processor run.</string>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 		</dict>
