@@ -26,10 +26,10 @@ Set %include_prereleases% to true in your override to package prelease builds in
 	<dict>
 		<key>NAME</key>
 		<string>GPG Tap Notifier</string>
-		<key>include_prereleases</key>
-		<false/>
 		<key>REPO</key>
 		<string>palantir/gpg-tap-notifier-macos</string>
+		<key>include_prereleases</key>
+		<false/>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

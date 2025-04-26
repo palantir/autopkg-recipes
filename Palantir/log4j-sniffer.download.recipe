@@ -30,12 +30,12 @@ Valid PLATFORM_ARCH arguments:
 	<dict>
 		<key>NAME</key>
 		<string>log4j-sniffer</string>
-		<key>include_prereleases</key>
-		<false/>
 		<key>PLATFORM_ARCH</key>
 		<string>arm64</string>
 		<key>REPO</key>
 		<string>palantir/log4j-sniffer</string>
+		<key>include_prereleases</key>
+		<false/>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

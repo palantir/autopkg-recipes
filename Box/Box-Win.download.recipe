@@ -26,10 +26,10 @@ Valid PLATFORM_ARCH arguments:
 	<string>com.github.palantir.download.Box-Win</string>
 	<key>Input</key>
 	<dict>
-		<key>PLATFORM_ARCH</key>
-		<string>win/Box-x64</string>
 		<key>NAME</key>
 		<string>Box</string>
+		<key>PLATFORM_ARCH</key>
+		<string>win/Box-x64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>

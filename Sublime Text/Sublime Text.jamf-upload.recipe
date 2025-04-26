@@ -24,7 +24,6 @@ limitations under the License.</string>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
 		<string>Productivity</string>
-		<key>SELF_SERVICE_DESCRIPTION</key>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
