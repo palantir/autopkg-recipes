@@ -47,20 +47,20 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>app_path</key>
+				<key>source_app</key>
 				<string>%destination_path%</string>
 			</dict>
 			<key>Processor</key>
-			<string>AppPkgCreator</string>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_app</key>
-				<string>%RECIPE_CACHE_DIR%/Copier/YourKit Java Profiler.app</string>
+				<key>app_path</key>
+				<string>%source_app%</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.haircut.processors/AppIconExtractor</string>
+			<string>AppPkgCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
