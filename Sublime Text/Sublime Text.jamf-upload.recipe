@@ -19,7 +19,7 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of Sublime Text from the vendor, creates an installer package, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jamf.aText</string>
+	<string>com.github.palantir.jamf-upload.Sublime Text</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
