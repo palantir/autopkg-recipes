@@ -17,7 +17,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of aText from the vendor, then creates an installer package.</string>
+	<string>Downloads the latest version of aText from the vendor, then creates an installer package and extracts the icon.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.pkg.aText</string>
 	<key>Input</key>
@@ -29,6 +29,20 @@ limitations under the License.</string>
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_app</key>
+				<string>%destination_path%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>app_path</key>
+				<string>%source_app%</string>
+			</dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
 		</dict>
