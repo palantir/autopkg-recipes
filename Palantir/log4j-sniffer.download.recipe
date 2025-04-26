@@ -21,9 +21,9 @@ limitations under the License.</string>
 
 Set %include_prereleases% to true in your override to package prelease builds in your environment.
 
-Valid PLATFORM_ARCH arguments are:
-- "arm64": Downloads JetBrains Toolbox for Apple Silicon Macs (default)
-- "amd64": Downloads JetBrains Toolbox for Intel Macs</string>
+Valid PLATFORM_ARCH arguments:
+- "arm64": log4j-sniffer for Apple Silicon Macs (default)
+- "amd64": log4j-sniffer for Intel Macs</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.log4j-sniffer</string>
 	<key>Input</key>
