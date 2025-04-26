@@ -17,17 +17,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Box for Windows (64-bit) from the vendor.
+	<string>Downloads the latest version of Box for Windows from the vendor.
 
-To download Box for Windows (32-bit), change DOWNLOAD_URL in your override to: https://e3.boxcdn.net/box-installers/desktop/releases/win32/Box-x86.msi</string>
+Valid PLATFORM_ARCH arguments:
+- "win32/Box-x86": Box for Windows (32-bit)
+- "win/Box-x64": Box for Windows (64-bit) (default)</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.Box-Win</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>https://e3.boxcdn.net/box-installers/desktop/releases/win/Box-x64.msi</string>
 		<key>NAME</key>
 		<string>Box</string>
+		<key>PLATFORM_ARCH</key>
+		<string>win/Box-x64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -37,7 +39,7 @@ To download Box for Windows (32-bit), change DOWNLOAD_URL in your override to: h
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>https://e3.boxcdn.net/box-installers/desktop/releases/%PLATFORM_ARCH%.msi</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -61,7 +63,7 @@ To download Box for Windows (32-bit), change DOWNLOAD_URL in your override to: h
 				<key>source</key>
 				<string>%pathname%</string>
 				<key>target</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%-Win64-%version%.msi</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.msi</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileMover</string>

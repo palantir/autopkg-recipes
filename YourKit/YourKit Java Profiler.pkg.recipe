@@ -17,7 +17,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of YourKit Java Profiler from the vendor, then creates an installer package.</string>
+	<string>Downloads the latest version of YourKit Java Profiler from the vendor, then creates an installer package and extracts the icon.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.pkg.YourKit Java Profiler</string>
 	<key>Input</key>
@@ -35,7 +35,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/YourKit Java Profiler.app</string>
+				<string>%RECIPE_CACHE_DIR%/Copier/YourKit Java Profiler.app</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
@@ -47,11 +47,34 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>app_path</key>
+				<key>source_app</key>
 				<string>%destination_path%</string>
 			</dict>
 			<key>Processor</key>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>app_path</key>
+				<string>%source_app%</string>
+			</dict>
+			<key>Processor</key>
 			<string>AppPkgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%pkgroot%</string>
+					<string>%RECIPE_CACHE_DIR%/Copier</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>PathDeleter processor run to clean up temp resources.</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>

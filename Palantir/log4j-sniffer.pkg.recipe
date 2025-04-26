@@ -39,9 +39,11 @@ limitations under the License.</string>
 					<key>private</key>
 					<string>0775</string>
 					<key>private/tmp</key>
-					<string>0777</string>
+					<string>0775</string>
 					<key>private/tmp/log4j-sniffer</key>
-					<string>0777</string>
+					<string>0775</string>
+					<key>private/tmp/log4j-sniffer/Scripts</key>
+					<string>0775</string>
 				</dict>
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
@@ -55,7 +57,7 @@ limitations under the License.</string>
 				<key>destination_path</key>
 				<string>%pkgroot%/private/tmp/log4j-sniffer/</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%-arm64-%version%.dmg</string>
+				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%-%PLATFORM_ARCH%-%version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -63,13 +65,75 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>destination_path</key>
-				<string>%pkgroot%/private/tmp/log4j-sniffer/</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%-x86-%version%.dmg</string>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+/bin/rm -rfv "${3}/private/tmp/log4j-sniffer" "${3}/usr/local/bin/log4j-sniffer"
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%pkgroot%/private/tmp/log4j-sniffer/Scripts/preinstall</string>
 			</dict>
 			<key>Processor</key>
-			<string>Copier</string>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+workingDir="${3}/private/tmp/log4j-sniffer"
+binaryPath="${3}/usr/local/bin/log4j-sniffer"
+dmgPath="$(/usr/bin/find "${workingDir}" -name "log4j-sniffer-*.dmg")"
+
+# Verify an installer disk image is present in working directory.
+if [ -z "$dmgPath" ]; then
+  echo "❌ ERROR: Disk image not found at ${workingDir}, unable to proceed."
+  exit 1
+else
+  echo "Verified disk image is present at ${dmgPath}. Attempting to mount disk image..."
+fi
+
+# Mount disk image.
+dmgName=$(/usr/bin/basename "$dmgPath" | /usr/bin/awk -F.dmg '{print $1}')
+mountPoint="${3}/Volumes/${dmgName}"
+/usr/bin/hdiutil attach "$dmgPath" -mountpoint "$mountPoint" -nobrowse
+
+# Search for binary in mounted disk image, or exit if disk image did not mount successfully.
+if [ -d "$mountPoint" ]; then
+  echo "Mounted disk image at ${mountPoint}. Looking for installer packages..."
+  binaryDmgPath=$(/usr/bin/find "$mountPoint" -name "log4j-sniffer")
+  if [ -z "$binaryDmgPath" ]; then
+	echo "❌ ERROR: Binary not found in mounted disk image, unable to proceed."
+	exit 1
+  else
+	echo "Verified binary is present at ${binaryDmgPath}. Proceeding with installation..."
+  fi
+else
+  echo "❌ ERROR: No mounted disk image found at ${mountPoint}, unable to proceed."
+  exit 1
+fi
+
+# Install binary to /usr/local/bin.
+/bin/cp "$binaryDmgPath" "${3}/usr/local/bin/"
+echo "Installed $(/usr/bin/arch) build of log4j-sniffer to /usr/local/bin."
+/usr/bin/xattr -d com.apple.quarantine "$binaryPath"
+echo "Removed quarantine attributes from ${binaryPath}."
+
+# Unmount disk image.
+/usr/bin/hdiutil detach "$(/usr/sbin/diskutil info "$mountPoint" | /usr/bin/awk '/Device Identifier/ {print $NF}')"
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%pkgroot%/private/tmp/log4j-sniffer/Scripts/postinstall</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -81,9 +145,9 @@ limitations under the License.</string>
 					<key>options</key>
 					<string>purge_ds_store</string>
 					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
+					<string>%NAME%-%PLATFORM_ARCH%-%version%</string>
 					<key>scripts</key>
-					<string>log4j-sniffer-scripts</string>
+					<string>%pkgroot%/private/tmp/log4j-sniffer/Scripts</string>
 					<key>version</key>
 					<string>%version%</string>
 				</dict>

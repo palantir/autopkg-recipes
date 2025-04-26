@@ -17,7 +17,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of JetBrains Toolbox from the vendor, then creates an installer package.</string>
+	<string>Downloads the latest version of JetBrains Toolbox from the vendor, then creates an installer package and extracts the icon.
+
+Valid PLATFORM_ARCH arguments:
+- "macM1": JetBrains Toolbox for Apple Silicon Macs (default)
+- "mac": JetBrains Toolbox for Intel Macs</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.pkg.JetBrains Toolbox</string>
 	<key>Input</key>
@@ -36,6 +40,15 @@ limitations under the License.</string>
 			</dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_app</key>
+				<string>%pathname%/JetBrains Toolbox.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
 		</dict>
 	</array>
 </dict>

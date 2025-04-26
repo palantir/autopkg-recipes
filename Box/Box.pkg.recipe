@@ -34,11 +34,42 @@ limitations under the License.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/FlatPkgUnpacker</string>
+				<key>flat_pkg_path</key>
 				<string>%pathname%</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.dataJAR-recipes.Shared Processors/DistributionPkgInfo</string>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/PkgPayloadUnpacker</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/FlatPkgUnpacker/BoxDesktopDrive.pkg/Payload</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_app</key>
+				<string>%destination_path%/Box.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.haircut.processors/AppIconExtractor</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%source_app%/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -48,8 +79,24 @@ limitations under the License.</string>
 				<key>target</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
 			</dict>
+			<key>Comment</key>
+			<string>FileMover processor run to rename the installer package using the NAME-version.pkg naming convention.</string>
 			<key>Processor</key>
 			<string>FileMover</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/FlatPkgUnpacker</string>
+					<string>%RECIPE_CACHE_DIR%/PkgPayloadUnpacker</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>PathDeleter processor run to clean up temp resources.</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>

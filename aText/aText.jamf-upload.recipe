@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Copyright 2020 Palantir Technologies, Inc.
+	<string>Copyright 2019 Palantir Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,28 +17,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Aerial from the vendor, makes an installer package, and uploads it to the Jamf Pro server.</string>
+	<string>Downloads the latest version of aText from the vendor, creates an installer package, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jamf.Aerial</string>
+	<string>com.github.palantir.jamf-upload.aText</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
-		<string>Digital Media</string>
-		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc.</string>
-		<key>SELF_SERVICE_ICON</key>
-		<string>ScreenSaverEngine.png</string>
-		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>%NAME%</string>
-		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
-		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
+		<string>Productivity</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.jaharmi.pkg.Aerial</string>
+	<string>com.github.palantir.pkg.aText</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -48,7 +40,7 @@ limitations under the License.</string>
 				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
 			<key>Comment</key>
-			<string>JamfCategoryUploader processor run for Self Service category.</string>
+			<string>JamfCategoryUploader processor run for category used for package.</string>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
 		</dict>
@@ -57,6 +49,8 @@ limitations under the License.</string>
 			<dict>
 				<key>pkg_category</key>
 				<string>%PACKAGE_CATEGORY%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
@@ -69,25 +63,6 @@ limitations under the License.</string>
 			</dict>
 			<key>Processor</key>
 			<string>StopProcessingIf</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
-				<key>policy_name</key>
-				<string>%SELF_SERVICE_POLICY_NAME%</string>
-				<key>policy_template</key>
-				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
-				<key>replace_icon</key>
-				<true/>
-				<key>replace_policy</key>
-				<true/>
-			</dict>
-			<key>Comment</key>
-			<string>JamfPolicyUploader processor run for Self Service policy.</string>
-			<key>Processor</key>
-			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
 		</dict>
 	</array>
 </dict>

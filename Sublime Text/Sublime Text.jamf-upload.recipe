@@ -17,28 +17,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of log4j-sniffer from the vendor, creates an installer package, uploads it to Jamf Pro, then adds it to a Self Service policy.</string>
+	<string>Downloads the latest version of Sublime Text from the vendor, creates an installer package, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jamf.log4j-sniffer</string>
+	<string>com.github.palantir.jamf-upload.Sublime Text</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
-		<string>Utility</string>
-		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>A tool that scans archives to check for vulnerable log4j versions.</string>
-		<key>SELF_SERVICE_ICON</key>
-		<string>Palantir.png</string>
-		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>log4j-sniffer</string>
-		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
-		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
+		<string>Productivity</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.palantir.pkg.log4j-sniffer</string>
+	<string>com.github.palantir.pkg.Sublime Text</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -47,6 +39,8 @@ limitations under the License.</string>
 				<key>category_name</key>
 				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
+			<key>Comment</key>
+			<string>JamfCategoryUploader processor run for category used for package.</string>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
 		</dict>
@@ -67,23 +61,6 @@ limitations under the License.</string>
 			</dict>
 			<key>Processor</key>
 			<string>StopProcessingIf</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
-				<key>policy_name</key>
-				<string>%SELF_SERVICE_POLICY_NAME%</string>
-				<key>policy_template</key>
-				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
-				<key>replace_icon</key>
-				<true/>
-				<key>replace_policy</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
 		</dict>
 	</array>
 </dict>

@@ -54,12 +54,12 @@ The recipe name can be replaced in overrides, but we recommend not using ".NET" 
 		</dict>
 		<dict>
 			<key>Arguments</key>
-				<dict>
-					<key>destination_path</key>
-					<string>%RECIPE_CACHE_DIR%/unzip</string>
-					<key>purge_destination</key>
-					<true/>
-				</dict>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Unarchiver</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
 			<key>Comment</key>
 			<string>Unarchiver processor run.</string>
 			<key>Processor</key>
