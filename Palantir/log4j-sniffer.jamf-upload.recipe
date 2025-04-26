@@ -17,23 +17,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of log4j-sniffer from the vendor, creates an installer package, uploads it to Jamf Pro, then adds it to a Self Service policy.</string>
+	<string>Downloads the latest version of log4j-sniffer from the vendor, creates an installer package, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.jamf.log4j-sniffer</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
 		<string>Utility</string>
-		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>log4j-sniffer crawls for all instances of log4j on disk within a specified directory. It can be used to determine whether there are any vulnerable instances of log4j within a directory tree and report or delete them depending on the mode used.
-
-Scanning for versions affected by CVE-2021-44228, CVE-2021-45046, CVE-2021-45105, and CVE-2021-44832 is currently supported.</string>
-		<key>SELF_SERVICE_ICON</key>
-		<string>Palantir.png</string>
-		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>log4j-sniffer</string>
-		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
-		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
@@ -69,23 +59,6 @@ Scanning for versions affected by CVE-2021-44228, CVE-2021-45046, CVE-2021-45105
 			</dict>
 			<key>Processor</key>
 			<string>StopProcessingIf</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>icon</key>
-				<string>%SELF_SERVICE_ICON%</string>
-				<key>policy_name</key>
-				<string>%SELF_SERVICE_POLICY_NAME%</string>
-				<key>policy_template</key>
-				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
-				<key>replace_icon</key>
-				<true/>
-				<key>replace_policy</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
 		</dict>
 	</array>
 </dict>

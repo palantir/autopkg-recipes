@@ -17,32 +17,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of JetBrains Toolbox from the vendor, creates an installer package, then uploads it to the Jamf Pro server.
-
-Valid PLATFORM_ARCH arguments are:
-- "macM1": Downloads JetBrains Toolbox for Apple Silicon Macs (default)
-- "mac": Downloads JetBrains Toolbox for Intel Macs</string>
+	<string>Downloads the latest version of aText from the vendor, creates an installer package, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.jamf.JetBrains Toolbox</string>
+	<string>com.github.palantir.jamf-upload.aText</string>
 	<key>Input</key>
 	<dict>
 		<key>PACKAGE_CATEGORY</key>
-		<string>Utility</string>
-		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>JetBrains Toolbox is a control panel for managing JetBrains application installations.</string>
-		<key>SELF_SERVICE_ICON</key>
-		<string>%NAME%.png</string>
-		<key>SELF_SERVICE_POLICY_NAME</key>
-		<string>%NAME%</string>
-		<key>SELF_SERVICE_POLICY_TEMPLATE</key>
-		<string>JamfUploader-PolicyTemplate-SelfService.xml</string>
+		<string>Productivity</string>
 		<key>UPDATE_PREDICATE</key>
 		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.palantir.pkg.JetBrains Toolbox</string>
+	<string>com.github.palantir.pkg.aText</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -52,7 +40,7 @@ Valid PLATFORM_ARCH arguments are:
 				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
 			<key>Comment</key>
-			<string>JamfCategoryUploader processor run for Self Service category.</string>
+			<string>JamfCategoryUploader processor run for category used for package.</string>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
 		</dict>
@@ -61,6 +49,8 @@ Valid PLATFORM_ARCH arguments are:
 			<dict>
 				<key>pkg_category</key>
 				<string>%PACKAGE_CATEGORY%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
@@ -73,25 +63,6 @@ Valid PLATFORM_ARCH arguments are:
 			</dict>
 			<key>Processor</key>
 			<string>StopProcessingIf</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>icon</key>
-				<string>%app_icon_path%</string>
-				<key>policy_name</key>
-				<string>%SELF_SERVICE_POLICY_NAME%</string>
-				<key>policy_template</key>
-				<string>%SELF_SERVICE_POLICY_TEMPLATE%</string>
-				<key>replace_icon</key>
-				<true/>
-				<key>replace_policy</key>
-				<true/>
-			</dict>
-			<key>Comment</key>
-			<string>JamfPolicyUploader processor run for Self Service policy.</string>
-			<key>Processor</key>
-			<string>com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader</string>
 		</dict>
 	</array>
 </dict>
