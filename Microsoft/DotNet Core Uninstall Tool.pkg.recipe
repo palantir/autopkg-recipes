@@ -57,7 +57,7 @@ The recipe name can be replaced in overrides, but we recommend not using ".NET" 
 				<key>destination_path</key>
 				<string>%pkgroot%/usr/local/bin/</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unzip/dotnet-core-uninstall</string>
+				<string>%RECIPE_CACHE_DIR%/Unarchiver/dotnet-core-uninstall</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -86,6 +86,7 @@ The recipe name can be replaced in overrides, but we recommend not using ".NET" 
 				<key>path_list</key>
 				<array>
 					<string>%pkgroot%</string>
+					<string>%RECIPE_CACHE_DIR%/Unarchiver</string>
 				</array>
 			</dict>
 			<key>Processor</key>
