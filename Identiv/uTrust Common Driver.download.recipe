@@ -48,7 +48,7 @@ limitations under the License.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/tmp/Unarchiver</string>
+				<string>%RECIPE_CACHE_DIR%/Unarchiver</string>
 			</dict>
 			<key>Processor</key>
 			<string>Unarchiver</string>
