@@ -19,9 +19,9 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of JetBrains Toolbox from the vendor.
 
-Valid PLATFORM_ARCH arguments are:
-- "macM1": Downloads JetBrains Toolbox for Apple Silicon Macs (default)
-- "mac": Downloads JetBrains Toolbox for Intel Macs</string>
+Valid PLATFORM_ARCH arguments:
+- "macM1": JetBrains Toolbox for Apple Silicon Macs (default)
+- "mac": JetBrains Toolbox for Intel Macs</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.JetBrains Toolbox</string>
 	<key>Input</key>
