@@ -41,7 +41,7 @@ The recipe name can be replaced in overrides, but we recommend not using ".NET" 
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>dotnet-core-uninstall.tar.gz</string>
+				<string>dotnet-core-uninstall\.tar\.gz</string>
 				<key>github_repo</key>
 				<string>%REPO%</string>
 			</dict>
