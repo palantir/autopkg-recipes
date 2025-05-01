@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Copyright 2025 Palantir Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+	<key>Description</key>
+	<string>Downloads the latest version of YubiKey Manager CLI (ykman) from the vendor.
+
+Set %include_prereleases% to true in your override to package prerelease builds in your environment.</string>
+	<key>Identifier</key>
+	<string>com.github.palantir.download.YubiKey Manager CLI</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>YubiKey Manager CLI</string>
+		<key>REPO</key>
+		<string>Yubico/yubikey-manager</string>
+		<key>include_prereleases</key>
+		<false/>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>yubikey-manager-*-mac.pkg$</string>
+				<key>github_repo</key>
+				<string>%REPO%</string>
+			</dict>
+			<key>Comment</key>
+			<string>GitHubReleasesInfoProvider processor run for .pkg download.</string>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%version%.pkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>URLDownloader processor run.</string>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Yubico Limited (LQA3CS5MM7)</string>
+					<string>Developer ID Certification Authority</string>
+					<string> Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
