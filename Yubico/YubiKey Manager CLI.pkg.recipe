@@ -26,6 +26,8 @@ Set %include_prereleases% to true in your override to package prerelease builds 
 	<dict/>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.palantir.download.YubiKey Manager CLI</string>
 	<key>Process</key>
 	<array>
 		<dict>
