@@ -19,7 +19,7 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of GPG Tap Notifier from the vendor.
 
-Set %include_prereleases% to true in your override to package prelease builds in your environment.</string>
+Set %include_prereleases% to true in your override to package prerelease builds in your environment.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.GPG Tap Notifier</string>
 	<key>Input</key>

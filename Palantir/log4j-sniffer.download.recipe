@@ -19,7 +19,7 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of log4j-sniffer from the vendor.
 
-Set %include_prereleases% to true in your override to package prelease builds in your environment.
+Set %include_prereleases% to true in your override to package prerelease builds in your environment.
 
 Valid PLATFORM_ARCH arguments:
 - "arm64": log4j-sniffer for Apple Silicon Macs (default)
