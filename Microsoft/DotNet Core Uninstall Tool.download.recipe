@@ -19,6 +19,8 @@ limitations under the License.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of dotnet-core-uninstall from the vendor.
 
+Set %include_prereleases% to true in your override to package prerelease builds in your environment.
+
 The recipe name can be replaced in overrides, but we recommend not using ".NET" as a prepend, as this can cause PkgCreator and other processors to fail with errors.</string>
 	<key>Identifier</key>
 	<string>com.github.palantir.download.DotNet Core Uninstall Tool</string>
@@ -28,6 +30,8 @@ The recipe name can be replaced in overrides, but we recommend not using ".NET" 
 		<string>dotnet-core-uninstall</string>
 		<key>REPO</key>
 		<string>dotnet/cli-lab</string>
+		<key>include_prereleases</key>
+		<false/>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

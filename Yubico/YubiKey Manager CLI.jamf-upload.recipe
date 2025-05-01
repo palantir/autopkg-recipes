@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Copyright 2022 Palantir Technologies, Inc.
+	<string>Copyright 2025 Palantir Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,51 +17,50 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of GPG Tap Notifier from the vendor.
-
-Set %include_prereleases% to true in your override to package prerelease builds in your environment.</string>
+	<string>Downloads the latest version of YubiKey Manager CLI (ykman) from the vendor, then uploads it to Jamf Pro.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.download.GPG Tap Notifier</string>
+	<string>com.github.palantir.jamf-upload.YubiKey Manager CLI</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>GPG Tap Notifier</string>
-		<key>REPO</key>
-		<string>palantir/gpg-tap-notifier-macos</string>
-		<key>include_prereleases</key>
-		<false/>
+		<key>PACKAGE_CATEGORY</key>
+		<string>Utility</string>
+		<key>UPDATE_PREDICATE</key>
+		<string>pkg_uploaded == False</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.5.0</string>
+	<string>2.0.2</string>
+	<key>ParentRecipe</key>
+	<string>com.github.palantir.pkg.YubiKey Manager CLI</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>asset_regex</key>
-				<string>GPG_Tap_Notifier\.pkg</string>
-				<key>github_repo</key>
-				<string>%REPO%</string>
+				<key>category_name</key>
+				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
 			<key>Comment</key>
-			<string>GitHubReleasesInfoProvider processor run for .pkg download.</string>
+			<string>JamfCategoryUploader processor run for category used for package.</string>
 			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>filename</key>
-				<string>%NAME%-%version%.pkg</string>
+				<key>pkg_category</key>
+				<string>%PACKAGE_CATEGORY%</string>
 			</dict>
-			<key>Comment</key>
-			<string>URLDownloader processor run.</string>
 			<key>Processor</key>
-			<string>URLDownloader</string>
+			<string>com.github.grahampugh.jamf-upload.processors/JamfPackageUploader</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>%UPDATE_PREDICATE%</string>
+			</dict>
 			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
+			<string>StopProcessingIf</string>
 		</dict>
 	</array>
 </dict>

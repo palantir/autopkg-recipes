@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Copyright 2022 Palantir Technologies, Inc.
+	<string>Copyright 2025 Palantir Technologies, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,51 +17,33 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of GPG Tap Notifier from the vendor.
+	<string>Downloads the latest version of YubiKey Manager CLI (ykman) from the vendor, then runs code signature verfication on the pkg installer.
 
 Set %include_prereleases% to true in your override to package prerelease builds in your environment.</string>
 	<key>Identifier</key>
-	<string>com.github.palantir.download.GPG Tap Notifier</string>
+	<string>com.github.palantir.pkg.YubiKey Manager CLI</string>
 	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>GPG Tap Notifier</string>
-		<key>REPO</key>
-		<string>palantir/gpg-tap-notifier-macos</string>
-		<key>include_prereleases</key>
-		<false/>
-	</dict>
+	<dict/>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.palantir.download.YubiKey Manager CLI</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>asset_regex</key>
-				<string>GPG_Tap_Notifier\.pkg</string>
-				<key>github_repo</key>
-				<string>%REPO%</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Yubico Limited (LQA3CS5MM7)</string>
+					<string>Developer ID Certification Authority</string>
+					<string> Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
 			</dict>
-			<key>Comment</key>
-			<string>GitHubReleasesInfoProvider processor run for .pkg download.</string>
 			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-%version%.pkg</string>
-			</dict>
-			<key>Comment</key>
-			<string>URLDownloader processor run.</string>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>
