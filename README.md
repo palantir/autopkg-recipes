@@ -24,7 +24,7 @@ The .jamf-upload recipes in this repo run the JamfPackageUploader processor writ
 
 ### AppIconExtractor
 
-Several .pkg recipes in this repo run the AppIconExtractor processor written by Matthew Warren to prepare an icon file for use in recipe overrides, such as JamfUploader workflows. Running recipe overrides of these recipes will require adding AppIconExtractor's repository to AutoPkg by running `autopkg repo-add haircut-recipes`. [See Automatically Export and Generate App Icons in AutoPkg Recipes](https://macblog.org/autopkg-icons/) for more information on using this processor in your recipes.
+Several .pkg recipes in this repo run the AppIconExtractor processor written by Matthew Warren to prepare an icon file for use in recipe overrides, such as JamfUploader workflows. Running recipe overrides of these recipes will require adding AppIconExtractor's repository to AutoPkg by running `autopkg repo-add haircut-recipes`. See [Automatically Export and Generate App Icons in AutoPkg Recipes](https://macblog.org/autopkg-icons/) for more information on using this processor in your recipes.
 
 ### MacAdmins Slack
 
