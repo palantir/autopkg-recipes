@@ -12,7 +12,7 @@ See [AutoPkg's documentation](https://github.com/autopkg/autopkg/wiki/Getting-St
 
 We welcome all contributions from the open source community to be submitted for review (in the form of GitHub pull requests). Feel free to fork this project and submit changes for approval. Thank you so much for taking the time to contribute!
 
-## Shared AutoPkg Processors
+## Third-Party AutoPkg Processors
 
 The recipes in this repository make use of some third-party shared processors to accomplish workflows not included in the core AutoPkg product. The sections below include the source repository and documentation for each processor. To add these shared processors' repositories to AutoPkg, run `autopkg repo-add $repo` for each repo.
 
