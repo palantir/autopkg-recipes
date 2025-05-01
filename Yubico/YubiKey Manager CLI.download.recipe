@@ -39,7 +39,7 @@ Set %include_prereleases% to true in your override to package prerelease builds 
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>yubikey-manager-*-mac.pkg$</string>
+				<string>^yubikey-manager-(\d|\.)*-mac.pkg$</string>
 				<key>github_repo</key>
 				<string>%REPO%</string>
 			</dict>
