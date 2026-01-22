@@ -24,7 +24,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 	<key>MinimumVersion</key>
 	<string>2.0.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.palantir.download.GPG Tap Notifier</string>
+	<string>com.github.palantir.pkg.GPG Tap Notifier</string>
 	<key>Process</key>
 	<array>
 		<dict>
